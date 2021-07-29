@@ -2,20 +2,69 @@
 <html>
 
 <head>
-<title style="color: darkseagreen;" >Houston Transit</title>
+<title style="color: darkseagreen;" >Homework 4</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+<script src="js/leaflet-providers.js"></script>
+
 </head>
 
 <body>
 	<div>
-		<h1 style="color: darkseagreen;text-align: center;" >Houston Transit</h1>
+		<h1 style="color: darkseagreen;text-align: center;" >UPP 465 Web Mapping</h1>
 	</div>
-		<h2 style="color: deeppink;text-align: center;" >Sarah Grumulaitis July 19, 2021</h2>
+		<h2 style="color: deeppink;text-align: center;" >Sarah Grumulaitis July 27, 2021</h2>
+	
 </body>
 
-<p style="text-align: center; color: mediumblue;" >Informational map of proposed public transportation in Houston</p>
+<p style="text-align: center; color: mediumblue;" >Random Map of Features for Practice with Random Idea Pop Ups</p>
 
-<div class= "map">
-<style>.embed-container {position: relative; padding-bottom: 80%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Houston Rail Stations Future-Copy" src="//univofillinois.maps.arcgis.com/apps/Embed/index.html?webmap=f4f4a752bec74a7b812d974c2eeada4e&extent=-95.7569,29.6164,-95.0599,29.9358&zoom=true&previewImage=false&scale=true&legendlayers=true&disable_scroll=true&theme=light"></iframe></div>
+<div id = "map">
 	
 </div>
+
+	<script>
+		var map = L.map('map').setView([29.7499, -95.3584], 13);
+
+		var Stadia_AlidadeSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+			maxZoom: 20,
+			attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+});.addto(map);
+
+		var circle = L.circle([29.7499, -95.3584],{
+		color: 'blue',
+  		fillColor: '#f03',
+  		fillOpacity: 0.5,
+  		radius: 750,
+}).addTo(map).bindPopup("My Favorite Park");
+
+		var line = L.polyline( [
+			[29.81, - 95.374]
+			[29.934, - 95.453]
+			]).addTo(map).bindPopup("Travel Route");
+
+		var marker = L.marker([29.7599, -95.5384]).addTo(map);
+
+		var polygon = L.polygon([
+    		[29.13, -95.11],
+    		[29.33, -95.08],
+    		[29.45, -95.33],
+    		[29.41, -95.41],
+], {
+  			color: 'blue', 
+  			fillColor: 'pink',
+  			fillOpacity: .14,
+}).addTo(map).bindPopup("Area Served by Kroger Grocery Store");
+
+
+	</script>
+
 </html>
+
+
